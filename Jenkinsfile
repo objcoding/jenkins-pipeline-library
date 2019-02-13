@@ -4,6 +4,7 @@ def getHost() {
     def remote = [:]
     remote.name = 'manager node'
     remote.user = 'root'
+    remote.host = "${REMOTE_HOST}"
     remote.port = 32200
     remote.identityFile = '/root/.ssh/id_rsa'
     remote.allowAnyHosts = true
@@ -38,7 +39,6 @@ pipeline {
             steps {
                 script {
                    server = getHost()
-                   server.host = "${REMOTE_HOST}"
                 }
             }
         }
