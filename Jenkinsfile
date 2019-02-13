@@ -3,7 +3,7 @@
 pipeline {
     agent any
     environment {
-        GIT_REPO = "https://github.com/objcoding/docker-jenkins-sample.git"
+        GIT_REPO = "${GIT_REPO_URL}"
         BUILD_IMAGE_SCRIPT_PATH = "build.sh"
     }
 
