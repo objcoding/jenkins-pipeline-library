@@ -1,16 +1,5 @@
 #!/usr/bin/env groovy
 
-def getHost() {
-    def remote = [:]
-    remote.name = 'manager node'
-    remote.host = '${REMOTE_HOST}'
-    remote.user = 'root'
-    remote.port = 32200
-    remote.identityFile = '/root/.ssh/id_rsa'
-    remote.allowAnyHosts = true
-    return remote
-}
-
 pipeline {
     agent any
 
@@ -45,7 +34,8 @@ pipeline {
 
         stage('执行发版') {
             steps {
-                sshCommand remote: server, command: "sudo docker stack deploy -c docker-compose.yml myapp"
+                sshCommand remote: [name: "manager node", host: "${REMOTE_HOST}", port: "32200" user: "root", identityFile: "/root/.ssh/id_rsa", allowAnyHosts: true],
+                command: "sudo docker stack deploy -c docker-compose.yml myapp"
             }
         }
     }
