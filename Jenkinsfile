@@ -26,7 +26,7 @@ pipeline {
 
         stage('发布版本') {
             steps {
-                echo "发布版本"
+
             }
         }
 
