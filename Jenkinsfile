@@ -20,13 +20,7 @@ pipeline {
 
         stage('构建镜像') {
             steps {
-                sh "sh build.sh ${BRANCH_NAME}"
-            }
-        }
-
-        stage('发布版本') {
-            steps {
-
+                sh "sh build.sh ${BRANCH_NAME} ${SERVICE_NAME} "
             }
         }
 
