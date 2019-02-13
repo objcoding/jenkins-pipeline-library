@@ -6,7 +6,7 @@ def getHost() {
     remote.host = '193.112.61.178'
     remote.user = 'root'
     remote.port = 32200
-    remote.identity = 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCayXDbBXLywJEIJ/aQPf0gizovq8BypiQEV+B+hgWqkp0JVOQCpdjc3upDPLKbG2lMNvVQWPeiwhHEcuK8uXNJ09+ey3CXR+rZmqfiNUh2M1HGwdRxhSGA96gKll3TT7IX/DUbYw3TzGustJ4fsyllczhL7MQDZTM1o6Dxzs8B0rSZOTUZX7aMA/8dTV3cFiEP8qNW69PWOaMHRhjBMQAC3PwKVmhG424ijSsUxGDmEY8dV3GtNbbJCFiYZxjxIFkLujsg0qBC4QTBIHZQQFpzJI9BYkCIhdnp7w5NkFarMJn/VOGTYaGqdzBShsap0iD8f6pS4Wq1espbpxcHqmhj root@c5a425bf535a'
+    remote.identityFile = '/root/.ssh/id_rsa'
     remote.allowAnyHosts = true
     return remote
 }
@@ -45,7 +45,7 @@ pipeline {
 
         stage('执行发版') {
             steps {
-                sshCommand remote: server, command: """ if test ! -d aaa/ccc ;then mkdir -p aaa/ccc;fi;cd aaa/ccc;rm -rf ./*;echo 'aa' > aa.log """
+                sshCommand remote: server, command: " echo 'aa' > aa.log "
             }
         }
     }
