@@ -6,6 +6,7 @@ def getHost() {
     remote.host = '193.112.61.178'
     remote.user = 'root'
     remote.port = 32200
+    remote.identity = 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8dT1HsigXJvRZAfckqU8jsA0iL/qvPhfKUxuWigBqmJKXWlqGncg52VHUuAgR6bOAgSi65UgwQd0iyze81oE8KdtAzYKqtjSghRAvuxvnMcBmPhdq+YuyVIQGiblZtnPpA/kPUuboJHfdO/wOk2bHEhS9FZ8Xe1FJ0w2jM5r5P5/Irt3ulLmPqg54KgffAL5t2Spn7aFylLeMP7TGamuYrbPHS7vEAncJ7rs8oOIq9lt+jDpMHQKpiC5o6vy/aKfzxidm5pbqilSR9+YomG1FEre04oid5cGvY2XJ22LB+LOb0vqKi8pptJcUMPjNA/wd+/vDOhX8cx2mIBhHM6eb root@chenghui.zhang'
     remote.allowAnyHosts = true
     return remote
 }
