@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-def getHost() {
+def getServer() {
     def remote = [:]
     remote.name = 'manager node'
     remote.user = 'root'
@@ -38,7 +38,7 @@ pipeline {
         stage('init-server'){
             steps {
                 script {
-                   server = getHost()
+                   server = getServer()
                 }
             }
         }
