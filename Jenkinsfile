@@ -45,7 +45,7 @@ pipeline {
 
         stage('执行发版') {
             steps {
-                sshCommand remote: server, command: " echo 'aa' > aa.log "
+                sshCommand remote: server, command: "sudo docker stack deploy -c docker-compose.yml myapp"
             }
         }
     }
