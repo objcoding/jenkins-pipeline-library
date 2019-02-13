@@ -38,7 +38,7 @@ pipeline {
             steps {
                 script {
                    server = getHost()
-                   server.host = '${REMOTE_HOST}'
+                   server.host = "${REMOTE_HOST}"
                 }
             }
         }
