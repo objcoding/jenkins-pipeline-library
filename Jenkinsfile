@@ -24,5 +24,10 @@ pipeline {
             }
         }
 
+        stage('执行发版') {
+            steps {
+                sshCommand remote: [name: "manager node", host: "193.112.61.178", port: "32200" user: "root", allowAnyHosts: true], command: "sudo docker stack deploy -c docker-compose.yml myapp"
+            }
+        }
     }
 }
