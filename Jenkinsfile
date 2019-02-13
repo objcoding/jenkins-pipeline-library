@@ -3,7 +3,7 @@
 def getHost() {
     def remote = [:]
     remote.name = 'manager node'
-    remote.host = '193.112.61.178'
+    remote.host = '${REMOTE_HOST}'
     remote.user = 'root'
     remote.port = 32200
     remote.identityFile = '/root/.ssh/id_rsa'
