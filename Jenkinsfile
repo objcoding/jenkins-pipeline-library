@@ -24,7 +24,7 @@ pipeline {
 
         stage('构建镜像') {
             steps {
-                sh "active=${1:-master}
+                sh "active=${BRANCH_NAME}
                     registry="172.16.0.13:5000"
                     timestamp=`date +%Y%m%d%H%M%S`
                     servicename=docker-jenkins-sample
