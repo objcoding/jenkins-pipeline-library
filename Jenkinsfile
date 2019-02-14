@@ -37,7 +37,7 @@ pipeline {
 
         stage('构建镜像') {
             steps {
-                sh "sh build.sh ${BRANCH_NAME} ${SERVICE_NAME} "
+                sh "sh build.sh ${BRANCH_NAME} "
             }
         }
 
