@@ -14,6 +14,10 @@ def getServer() {
 pipeline {
     agent any
 
+    environment {
+        BRANCH_NAME = "master"
+    }
+
     stages {
         stage('获取代码') {
             steps {
