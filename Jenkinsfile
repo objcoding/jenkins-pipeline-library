@@ -15,6 +15,7 @@ pipeline {
     agent any
 
     environment {
+        BRANCH_NAME = "master"
         COMPOSE_FILE_NAME = "docker-compose-" + "${STACK_NAME}" + ".yml"
     }
 
