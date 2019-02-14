@@ -4,7 +4,7 @@ def getServer() {
     def remote = [:]
     remote.name = 'manager node'
     remote.user = 'root'
-    remote.host = "${REMOTE_HOST}"
+    remote.host = "193.112.61.178"
     remote.port = 32200
     remote.identityFile = '/root/.ssh/id_rsa'
     remote.allowAnyHosts = true
@@ -15,7 +15,6 @@ pipeline {
     agent any
 
     environment {
-        BRANCH_NAME = "master"
         COMPOSE_FILE_NAME = "docker-compose-" + "${STACK_NAME}" + ".yml"
     }
 
