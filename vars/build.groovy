@@ -42,7 +42,7 @@ def call(Map map) {
             stage('构建镜像') {
                 steps {
                     sh "if [ ! -f \"build.sh\" ];then \n" +
-                            "wget https://git.x-vipay.com/docker/jenkins-pipeline-library/raw/master/resources/shell/build.sh \n" +
+                            "wget https://raw.githubusercontent.com/objcoding/jenkins-pipeline-library/master/resources/shell/build.sh \n" +
                             "fi"
                     sh "sh build.sh ${BRANCH_NAME} "
                 }
