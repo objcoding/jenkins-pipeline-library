@@ -1,0 +1,45 @@
+version: "3.5"
+
+services:
+  project1:
+    image: 193.112.61.178:5000/project1:sit-latest
+    ports:
+      - 8081:8081
+    networks:
+      - chaos_net
+    deploy:
+      mode: replicated
+      replicas: 2
+    labels:
+      - "servicename=project1"
+    logging:
+      driver: "json-file"
+      options:
+        labels: "servicename"
+        tag: "{{.ImageName}}/{{.Name}}/{{.ID}}"
+        max-size: "100m"
+        max-file: "10"
+
+  project2:
+    image: 193.112.61.178:5000/project2:sit-latest
+    ports:
+      - 8082:8082
+    networks:
+      - chaos_net
+    deploy:
+      mode: replicated
+      replicas: 2
+    labels:
+      - "servicename=project2"
+    logging:
+      driver: "json-file"
+      options:
+        labels: "servicename"
+        tag: "{{.ImageName}}/{{.Name}}/{{.ID}}"
+        max-size: "100m"
+        max-file: "10"
+
+networks:
+  chaos_net:
+    name: chaos_net
+    driver: overlay
