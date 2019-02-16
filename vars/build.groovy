@@ -21,7 +21,7 @@ def call(Map map) {
             REPO_URL = "${map.REPO_URL}"
             BRANCH_NAME = "${map.BRANCH_NAME}"
             STACK_NAME = "${map.STACK_NAME}"
-            COMPOSE_FILE_NAME = "docker-compose-" + "${map.STACK_NAME}" + ".yml"
+            COMPOSE_FILE_NAME = "docker-compose-" + "${map.STACK_NAME}" + "-" + "${map.BRANCH_NAME}" + ".yml"
         }
 
         stages {
@@ -41,14 +41,12 @@ def call(Map map) {
 
             stage('构建镜像') {
                 steps {
-                    sh "if [ ! -f \"build.sh\" ];then \n" +
-                            "wget https://raw.githubusercontent.com/objcoding/jenkins-pipeline-library/master/resources/shell/build.sh \n" +
-                            "fi"
+                    sh "wget -O build.sh https://git.x-vipay.com/docker/jenkins-pipeline-library/raw/master/resources/shell/build.sh"
                     sh "sh build.sh ${BRANCH_NAME} "
                 }
             }
 
-            stage('init-server'){
+            stage('init-server') {
                 steps {
                     script {
                         server = getServer()
@@ -58,7 +56,10 @@ def call(Map map) {
 
             stage('执行发版') {
                 steps {
-                    sshCommand remote: server, command: "sudo docker stack deploy -c ${COMPOSE_FILE_NAME} ${STACK_NAME}"
+                    writeFile file: 'deploy.sh', text: "wget -O ${COMPOSE_FILE_NAME} " +
+                            " https://git.x-vipay.com/docker/jenkins-pipeline-library/raw/master/resources/docker-compose/${COMPOSE_FILE_NAME} \n" +
+                            "sudo docker stack deploy -c ${COMPOSE_FILE_NAME} ${STACK_NAME}"
+                    sshScript remote: server, script: "deploy.sh"
                 }
             }
         }
