@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # env
-branch=${1:-none}
-registry="172.17.10.127:5000"
+branch=${1:-master}
+registry="193.112.61.178:5000"
 timestamp=`date +%Y%m%d%H%M%S`
 
 # 检索出所有Dockerfile
