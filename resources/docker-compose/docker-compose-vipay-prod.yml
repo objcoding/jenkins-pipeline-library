@@ -7,9 +7,6 @@ services:
       - 8081:8081
     networks:
       - chaos_net
-    environment:
-      DUBBO_IP_TO_REGISTRY: ${DUBBO_IP_TO_REGISTRY}
-      DUBBO_PORT_TO_REGISTRY: 8081
     deploy:
       mode: replicated
       replicas: 2
@@ -29,9 +26,6 @@ services:
       - 8082:8082
     networks:
       - chaos_net
-    environment:
-      DUBBO_IP_TO_REGISTRY: ${DUBBO_IP_TO_REGISTRY}
-      DUBBO_PORT_TO_REGISTRY: 8081
     deploy:
       mode: replicated
       replicas: 2
