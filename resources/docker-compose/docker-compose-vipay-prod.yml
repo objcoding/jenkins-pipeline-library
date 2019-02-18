@@ -43,3 +43,6 @@ networks:
   chaos_net:
     name: chaos_net
     driver: overlay
+    ipam:
+      config:
+        - subnet: 10.18.0.0/24
